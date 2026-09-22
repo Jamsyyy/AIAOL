@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harvest2Day</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+
+<div class="container">
+<header>
+<h1>Harvest2Day</h1>
+<div class="small">Predict your yields</div>
+<a href="https://www.kaggle.com/datasets/nurfianqodar/indonesian-rice-production-dataset">Download Dataset Here</a>
+</header>
+
+<h2>1) Upload CSV</h2>
+<input type="file" id="csvFile" />
+<button onclick="uploadDataset()">Upload</button>
+<div id="uploadStatus"></div>
+
+<h2>2) Select Province</h2>
+<select id="provinceSelect"><option>— upload dataset first —</option></select>
+<button id="trainBtn">Train Model</button>
+<div id="trainStatus"></div>
+
+<div id="modelInfo" class="hidden">
+    <div>R²: <span id="statR2"></span></div>
+    <div>RMSE: <span id="statRmse"></span></div>
+    <div>Slope: <span id="statSlope"></span></div>
+    <div>Intercept: <span id="statIntercept"></span></div>
+    <img id="plotImg" />
+</div>
+
+<h2>3) Choose Prediction Mode</h2>
+<select id="modeSelect">
+    <option value="province">Province Production</option>
+    <option value="farmer">Farmer by Area (ha)</option>
+</select>
+
+<div id="provinceMode">
+    <h3>Predict Province Output</h3>
+    <input id="predYear" type="number" placeholder="Year" />
+    <button id="predictBtn">Predict</button>
+    <div id="predResult" class="result hidden"></div>
+</div>
+
+<div id="farmerMode" class="hidden">
+    <h3>Predict Farmer Output</h3>
+    <input id="areaHa" type="number" placeholder="Area (ha)" />
+
+    <input id="farmerYear" type="number" placeholder="Year (optional)" />
+
+    <button id="predictFarmerBtn">Predict</button>
+    <div id="farmerResult" class="result hidden"></div>
+</div>
+
+</div>
+
+</body>
+</html>
